@@ -1,5 +1,5 @@
 # API-Gateway
-**What is an API Gateway? A Clear and Comprehensive Explanation**
+**What is an API Gateway?**
 
 An **API Gateway** serves as the single entry point (or "front door") for all client applications (such as mobile apps, web browsers, third-party services, or other systems) that need to interact with the backend services of an application. It acts as an intermediary layer — often described as a **reverse proxy** — sitting between the clients and a collection (or microservices-based architecture) of backend services.
 
