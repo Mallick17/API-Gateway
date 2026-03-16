@@ -128,6 +128,8 @@ Let's trace a real request step-by-step. Imagine you're a user logging into a so
 • It might cache this response if it's something that will be requested often
 • It returns the response to you
 
+![alt text](image-2.png)
+
 ---
 
 ## Additional Critical Services of an API Gateway
