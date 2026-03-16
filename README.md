@@ -1,4 +1,4 @@
-# Complete Guide to API Gateways
+# API Gateways
 
 ## Understanding the Guardian Between Clients and Services
 
