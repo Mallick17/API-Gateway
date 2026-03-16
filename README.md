@@ -107,12 +107,14 @@ Let's trace a real request step-by-step. Imagine you're a user logging into a so
 • The API Gateway looks at your request path (/login) and identifies which backend service handles login requests
 • It might have multiple instances of this service running (for speed and reliability), so it picks one (usually through load balancing)
 
-
+![alt text](image.png)
 
 ### Step 8: Protocol Translation & Forwarding
 
 • The API Gateway transforms your REST request into whatever protocol the backend service uses (REST, gRPC, etc.)
 • It sends the request to the selected backend service
+
+![alt text](image-1.png)
 
 ### Step 9: Backend Processing
 
