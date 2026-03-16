@@ -145,6 +145,8 @@ Beyond the main functions, API Gateways provide these important services:
 | Analytics | Collects data on usage patterns | Helps understand user behavior and system health |
 | Billing | Tracks API usage for billing purposes | Necessary for APIs that charge based on usage |
 
+![alt text](image-3.png)
+
 ---
 
 ## Why Do We Need API Gateways?
