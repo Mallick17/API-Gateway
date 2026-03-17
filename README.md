@@ -370,21 +370,21 @@ Your Lambda is now connected to the API!
 
 ### When to Use HTTP API
 
-✅ Modern serverless applications
-✅ Simple microservices
-✅ Cost-conscious projects
-✅ OpenID Connect / OAuth2 authentication needed
-✅ Quick development
+- Modern serverless applications
+- Simple microservices
+- Cost-conscious projects
+- OpenID Connect / OAuth2 authentication needed
+- Quick development
 
 ### When to Use REST API
 
-✅ Complex request/response transformation
-✅ API Keys for authorization
-✅ Caching requirements
-✅ Stage variables needed
-✅ Legacy integrations
-✅ Enterprise requirements
-✅ Full control over mapping templates
+- Complex request/response transformation
+- API Keys for authorization
+- Caching requirements
+- Stage variables needed
+- Legacy integrations
+- Enterprise requirements
+- Full control over mapping templates
 
 ### Decision Tree
 
