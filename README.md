@@ -203,6 +203,25 @@ We'll create a simple flow:
 Client → API Gateway (GET) → Lambda Function → Response (JSON, 200 OK) → Client
 ```
 
+## Request flow: User → API Gateway → Lambda → back
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant APIGateway as API Gateway
+    participant Lambda
+
+    User->>APIGateway: 1. HTTP request (e.g., GET /api/data)
+    APIGateway->>Lambda: 2. Triggers Lambda with event object
+    Lambda-->>APIGateway: 3. Returns response (statusCode, body, etc.)
+
+    activate Lambda
+        note over Lambda: Lambda business logic:\n- Parse event/query/path params\n- Call DB, external APIs, etc.\n- Construct JSON response
+    deactivate Lambda
+
+    APIGateway-->>User: 4. HTTP response to client
+```
+
 ### Step 1: Create the Lambda Function
 
 #### 1.1 Navigate to Lambda
