@@ -223,16 +223,28 @@ Client → API Gateway (GET) → Lambda Function → Response (JSON, 200 OK) →
 Replace the default code with:
 
 ```python
+import json
+
 def lambda_handler(event, context):
+    """
+    A simple Lambda function that handles a GET request from the API gateway.
+    """
+    # This is the data you want to return.
+    name = "World"
+    if event.get('queryStringParameters'):
+        name = event.get('queryStringParameters').get('name', name)
+
+    response_data = {
+        "message": f"Hello, Mallick! Your request was successful.",
+        "status": "success"
+    }
+
+    # This is the required response format for API Gateway.
+    # The 'body' must be a string, so we use json.dumps to convert our response data to a JSON string.
     return {
-        'statusCode': 200,
-        'headers': {
-            'Content-Type': 'application/json'
-        },
-        'body': {
-            'message': 'Hello from API Gateway!',
-            'status': 'success'
-        }
+        "statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps(response_data)
     }
 ```
 
