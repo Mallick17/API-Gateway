@@ -835,7 +835,23 @@ Imagine you're receiving user registration data:
 3. Click **Create resource**
 4. Click **Create method** → **POST**
 5. Integration type: **Lambda**
-6. Use existing non-proxy lambda
+6. Create a new Lambda 
+```python
+import json
+
+def lambda_handler(event, context):
+    name = event.get('name')
+
+    if not name:
+        params = event.get('queryStringParameters', {})
+        name = params.get('name')
+
+    return {
+        "statusCode": 200,
+        "body": f"Request Payload = {event}!"
+    }
+```
+
 7. Click **Create method**
 
 #### Step 3: Create the Validation Model
