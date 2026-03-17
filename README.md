@@ -633,9 +633,11 @@ Integration request is where we map/transform the incoming request before sendin
 1. Open Postman
 2. Create new request
 3. Method: **POST**
-4. URL: `{invoke-url}/nonproxy-demo-api?name=Rahul`
-5. Click **Send**
-6. Should see response with your name
+4. Go to the **AWS API Gateway to REST API, Click on the created proxy and select the POST API and Copy the Invoke URL**
+5. Paste URL: `{invoke-url}/nonproxy-demo-api?name=Rahul`
+6. Add _Query Params_ : Key:name , value:GyanMallick
+7. Click **Send**
+8. Should see response with your name
 
 **The Power of Non-Proxy Integration**: You modified the request at the API Gateway level without touching Lambda code!
 
