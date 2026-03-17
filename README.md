@@ -483,7 +483,20 @@ def lambda_handler(event, context):
 or
 
 ```python
+import json
 
+def lambda_handler(event, context):
+    name = event.get('name')
+
+    if not name:
+        params = event.get('queryStringParameters', {})
+        name = params.get('name')
+
+    return {
+        "statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": f"Hello, {name}!"
+    }
 ```
 
 ##### 1.3 Deploy and Test
