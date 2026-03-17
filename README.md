@@ -596,9 +596,13 @@ Integration request is where we map/transform the incoming request before sendin
 8. In the template body, add:
 
 ```json
+#set($originalParam = $input.params('name'))
+#set($prefix = "non_pro")
+#if(!$originalParam.startsWith($prefix))
+  #set ($originalParam = $prefix + $originalParam)
+#end
 {
-    "name": "$input.params('name')",
-    "prefix": "non-proxy-prefix-"
+  "name": "$originalParam"
 }
 ```
 
