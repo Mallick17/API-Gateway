@@ -464,24 +464,26 @@ We'll create an API that:
 ##### 1.2 Add Code
 
 ```python
+import json
+
 def lambda_handler(event, context):
-    """
-    Non-proxy integration - receives mapped request data
-    """
-    try:
-        # Extract name from the event
-        # In non-proxy, the data comes from the mapping template
-        name = event.get('name', 'Unknown')
-        
-        return {
-            'statusCode': 200,
-            'message': f'Hello {name}'
-        }
-    except Exception as e:
-        return {
-            'statusCode': 500,
-            'message': f'Error: {str(e)}'
-        }
+    # Safe extraction of query parameter
+    name = (
+        event.get('queryStringParameters', {}).get('name') or
+        event.get('name', 'World')
+    )
+
+    return {
+        "statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps({"message": f"Hello, {name}!"})
+    }
+```
+
+or
+
+```python
+
 ```
 
 ##### 1.3 Deploy and Test
