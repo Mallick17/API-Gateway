@@ -756,7 +756,7 @@ Imagine you're receiving user registration data:
 {
     "name": "John Doe",
     "email": "john@example.com",
-    "mobile": "9876543210"
+    "mobile-number": 9876543210
 }
 ```
 
