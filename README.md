@@ -780,27 +780,30 @@ Imagine you're receiving user registration data:
 
 ```json
 {
-    "type": "object",
-    "properties": {
-        "name": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 100,
-            "description": "User's full name"
-        },
-        "email": {
-            "type": "string",
-            "format": "email",
-            "description": "Valid email address"
-        },
-        "mobile": {
-            "type": "string",
-            "pattern": "^[0-9]{10}$",
-            "description": "10-digit mobile number"
-        }
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "RequestModel",
+  "type": "object",
+  "required": [
+    "name",
+    "email",
+    "mobile-number"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
     },
-    "required": ["name", "email", "mobile"],
-    "additionalProperties": false
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "mobile-number": {
+      "type": "integer",
+      "minimum": 1000000000,
+      "maximum": 9999999999
+    }
+  },
+  "additionalProperties": false
 }
 ```
 
@@ -835,7 +838,8 @@ Imagine you're receiving user registration data:
 3. Click **Create resource**
 4. Click **Create method** → **POST**
 5. Integration type: **Lambda**
-6. Create a new Lambda 
+6. Create a new Lambda
+   
 ```python
 import json
 
@@ -861,7 +865,7 @@ def lambda_handler(event, context):
 3. Model name: `demo-request-validator`
 4. Content-Type: `application/json`
 5. In Schema field, paste your model schema which is mentioned below
-```json
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -889,7 +893,6 @@ def lambda_handler(event, context):
   },
   "additionalProperties": false
 }
-```
 ```
 
 6. Click **Create**
