@@ -860,7 +860,38 @@ def lambda_handler(event, context):
 2. Click **Create model**
 3. Model name: `demo-request-validator`
 4. Content-Type: `application/json`
-5. In Schema field, paste your model schema (shown above)
+5. In Schema field, paste your model schema which is mentioned below
+```json
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "RequestModel",
+  "type": "object",
+  "required": [
+    "name",
+    "email",
+    "mobile-number"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "mobile-number": {
+      "type": "integer",
+      "minimum": 1000000000,
+      "maximum": 9999999999
+    }
+  },
+  "additionalProperties": false
+}
+```
+```
+
 6. Click **Create**
 
 #### Step 4: Enable Validation on Method
