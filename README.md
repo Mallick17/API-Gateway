@@ -506,11 +506,11 @@ def lambda_handler(event, context):
 3. Create test event with:
 ```json
 {
-    "name": "Rahul"
+    "name": "Mallick"
 }
 ```
 4. Click **Test**
-5. Should return: `Hello Rahul`
+5. Should return: `Hello Mallick`
 
 ---
 
