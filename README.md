@@ -203,23 +203,30 @@ We'll create a simple flow:
 Client → API Gateway (GET) → Lambda Function → Response (JSON, 200 OK) → Client
 ```
 
-## Request flow: User → API Gateway → Lambda → back
+## Request flow: User → API Gateway → Lambda → API Gateway → User
+```text
+User                    API Gateway                AWS Lambda
+ |                            |                         |
+ | 1. GET /api/hello          |                         |
+ |   ?name=Gyan               |                         |
+ | ──────────────────────────>|                         |
+ |                            |                         |
+ |                            | 2. Invoke Lambda        |
+ |                            |  (event, context) ────> |
+ |                            |                         | 
+ |                            |                         | 3. Lambda Handler Executes:
+ |                            |                         |    • Parse queryStringParameters
+ |                            |                         |    • Set name = "Gyan" or "World"
+ |                            |                         |    • Create JSON response_data
+ |                            |                         |    • Return {statusCode: 200, body}
+ |                            |                         |
+ |                            | <────────────────────── |
+ |                            | 3. Lambda Response      |
+ |                            |                         |
+ | 4. HTTP 200 JSON           |                         |
+ | <──────────────────────────|                         |
+ |                            |                         |
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant APIGateway as API Gateway
-    participant Lambda
-
-    User->>APIGateway: 1. HTTP request (e.g., GET /api/data)
-    APIGateway->>Lambda: 2. Triggers Lambda with event object
-    Lambda-->>APIGateway: 3. Returns response (statusCode, body, etc.)
-
-    activate Lambda
-        note over Lambda: Lambda business logic:\n- Parse event/query/path params\n- Call DB, external APIs, etc.\n- Construct JSON response
-    deactivate Lambda
-
-    APIGateway-->>User: 4. HTTP response to client
 ```
 
 ### Step 1: Create the Lambda Function
