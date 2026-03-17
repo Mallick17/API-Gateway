@@ -435,8 +435,8 @@ Is your API simple and modern?
 ```
 Client Request → [API Gateway Modifies Request] → Lambda → [API Gateway Modifies Response] → Client
 ```
-<img width="1121" height="606" alt="image" src="https://github.com/user-attachments/assets/08af94e4-0922-4bd8-a764-23076316be30" />
 
+<img width="718" height="389" alt="image" src="https://github.com/user-attachments/assets/f6ca4445-5cb0-4a80-8f0f-d14a87acbe51" />
 
 **Advantages**:
 - Full control over request/response
