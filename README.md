@@ -660,36 +660,20 @@ Similar to non-proxy, but Lambda handles all the transformation.
 ##### 1.2 Add Code
 
 ```python
+import json
+
 def lambda_handler(event, context):
-    """
-    Proxy integration - Lambda receives full request and returns full response
-    """
-    try:
-        # In proxy integration, we receive the full request object
-        # We need to parse query parameters ourselves
-        query_params = event.get('queryStringParameters', {})
-        name = query_params.get('name', 'Unknown') if query_params else 'Unknown'
-        
-        return {
-            'statusCode': 200,
-            'headers': {
-                'Content-Type': 'application/json'
-            },
-            'body': {
-                'message': f'Hello {name}',
-                'status': 'success'
-            }
-        }
-    except Exception as e:
-        return {
-            'statusCode': 500,
-            'headers': {
-                'Content-Type': 'application/json'
-            },
-            'body': {
-                'error': str(e)
-            }
-        }
+    name = event.get('name')
+
+    if not name:
+        params = event.get('queryStringParameters', {})
+        name = params.get('name')
+
+    return {
+        "statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": f"Hello, {name}!"
+    }
 ```
 
 ##### 1.3 Deploy
