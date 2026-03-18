@@ -1174,6 +1174,10 @@ CloudWatch Logs pricing:
 
 ---
 
+---
+
+---
+
 ## Resource Policies
 
 ### What is a Resource Policy?
